@@ -6,12 +6,11 @@ const chatbotResponses = {
 
   about: "I'm Sree's personal assistant 🤖 — I can help you explore portfolio links, skills, projects, resume and career details.",
 
-  email: "📩 You can reach Sree at: **sreeprathaofficial@gmail.com**",
+  email: "📩 You can reach Sree at: **sree3092006@gmail.com**",
 
   resume: "📄 Here you go! Opening resume... (if not automatic, check the resume section 😊)",
 
-  github: "🐱‍💻 GitHub Profile: github.com/sreeprathaa (replace with your link)",
-
+  github: "🐱‍💻 GitHub Profile: https://github.com/sreeprathaa06",
   linkedin: "🔗 LinkedIn: https://linkedin.com/in/username (replace with your link)",
 
   skills:

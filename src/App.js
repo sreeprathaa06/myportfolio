@@ -5,20 +5,27 @@ import Home from "./components/Home/Home";
 import About from "./components/About/About";
 import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer";
-import Resume from "./components/Resume/ResumeNew";
+import Resume from "./components/Contact/Contact";
+// at top
+import Contact from "./components/Contact/Contact";
+import Achievements from "./components/Achievements/Achievements";
+
+import Galaxy from "./components/Galaxy";
+
 import {
   BrowserRouter as Router,
   Route,
   Routes,
   Navigate
 } from "react-router-dom";
+
 import ScrollToTop from "./components/ScrollToTop";
 import "./style.css";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-// If chatbot file exists, import it (keep but won't break if missing)
-import Chatbot from "./components/Chatbot"; 
+// Chatbot
+import Chatbot from "./components/Chatbot";
 
 function App() {
   const [load, updateLoad] = useState(true);
@@ -36,6 +43,10 @@ function App() {
       <Preloader load={load} />
 
       <div className="App" id={load ? "no-scroll" : "scroll"}>
+
+        {/* 🌌 Galaxy background canvas */}
+        <Galaxy />
+
         <Navbar />
         <ScrollToTop />
 
@@ -43,11 +54,12 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/project" element={<Projects />} />
           <Route path="/about" element={<About />} />
-          <Route path="/resume" element={<Resume />} />
+         <Route path="/contact" element={<Contact />} />
+         <Route path="/achievements" element={<Achievements />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
 
-        {/* Chatbot Section — appears bottom-right */}
+        {/* 🤖 Floating chatbot */}
         {Chatbot && <Chatbot />}
 
         <Footer />

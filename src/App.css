@@ -1,4 +1,65 @@
-body { margin: 0; font-family: Arial, sans-serif; }
+body { 
+  margin: 0; 
+  font-family: Arial, sans-serif; 
+}
+
+/* ======= 🌌 GALAXY BACKGROUND (GLOBAL) ======= */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  pointer-events: none;
+
+  background: radial-gradient(circle at 20% 30%, #5e2fa6 0%, transparent 60%),
+              radial-gradient(circle at 80% 70%, #a035d3 0%, transparent 60%),
+              radial-gradient(circle at 50% 80%, #4c0099 0%, transparent 60%),
+              linear-gradient(135deg, #0a0016, #12002b, #0b001a);
+
+  filter: blur(80px);
+  animation: galaxyMove 12s ease-in-out infinite alternate;
+  opacity: 0.9;
+}
+
+/* 🌠 Nebula Movement Animation */
+@keyframes galaxyMove {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  50%  { transform: translate(20px, -30px) scale(1.05); }
+  100% { transform: translate(-20px, 20px) scale(1); }
+}
+
+/* ======= 🌠 EXTRA GALAXY VISIBLE LAYERS ======= */
+.galaxy-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+
+  background: radial-gradient(circle at 20% 20%, rgba(150, 60, 255, 0.4), transparent 60%),
+              radial-gradient(circle at 80% 70%, rgba(255, 80, 255, 0.35), transparent 60%),
+              radial-gradient(circle at 50% 90%, rgba(80, 30, 180, 0.4), transparent 70%),
+              linear-gradient(135deg, #090015, #12002a, #0a0018);
+  
+  animation: galaxyFloat 12s ease-in-out infinite alternate;
+  filter: blur(40px);
+  opacity: 1;
+}
+
+@keyframes galaxyFloat {
+  0% { transform: translate(0px, 0px) scale(1); }
+  50% { transform: translate(20px, -20px) scale(1.05); }
+  100% { transform: translate(-20px, 20px) scale(1); }
+}
+
+/* ===============================
+   EXISTING PORTFOLIO STYLES
+==================================*/
 
 .App {
   text-align: center;
@@ -31,10 +92,44 @@ body { margin: 0; font-family: Arial, sans-serif; }
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* About image */
+.about-img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-img img {
+  width: 320px;
+  height: 320px;
+  max-width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  transition: transform .25s ease;
+}
+
+.about-img img:hover {
+  transform: scale(1.03);
+}
+
+/* ======= 📱 MOBILE IMAGE SIZE ONLY ======= */
+@media (max-width: 576px) {
+  .about-img img {
+    width: 160px;
+    height: 160px;
   }
-  to {
-    transform: rotate(360deg);
-  }
+}
+.galaxy-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;   /* makes it stay BEHIND everything */
+  pointer-events: none;
 }

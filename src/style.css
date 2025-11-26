@@ -13,6 +13,20 @@ html {
 
   --imp-text-color: #c770f0;
 }
+/* in style.css or App.css */
+
+/* .contact-section {
+  background-image: var(--section-background-color); /* uses your existing gradient variable */
+  /* min-height: 70vh;
+} */
+
+/* .contact-list a {
+  text-decoration: none;
+}
+
+.contact-list a:hover {
+  text-decoration: underline;
+} */ */
 
 .purple {
   color: var(--imp-text-color) !important;
@@ -614,6 +628,8 @@ button:focus {
 @media (max-width: 767px) {
   .about-img {
     padding-top: 0 !important;
+    border-radius: 10px !important;
+
   }
 }
 /* --------- */
