@@ -1,0 +1,14 @@
+.galaxy-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+
+  background: radial-gradient(circle at 20% 20%, rgba(70, 20, 120, 0.5), transparent 70%),
+              radial-gradient(circle at 80% 70%, rgba(120, 40, 200, 0.4), transparent 70%),
+              linear-gradient(135deg, #080013, #120028, #0a0017);
+}
+
