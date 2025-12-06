@@ -60,7 +60,7 @@ function App() {
         </Routes>
 
         {/* 🤖 Floating chatbot */}
-        {Chatbot && <Chatbot />}
+        <Chatbot />
 
         <Footer />
       </div>

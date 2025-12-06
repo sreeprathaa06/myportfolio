@@ -3,8 +3,9 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import logo from "../Assets/logo.png";
+import avatar from "../Assets/avatar.png";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { CgGitFork, CgFileDocument } from "react-icons/cg";
 import { ImBlog } from "react-icons/im";
 import {
@@ -17,6 +18,7 @@ import {
 function NavBar() {
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
+  const location = useLocation();
 
   function scrollHandler() {
     if (window.scrollY >= 20) {
@@ -36,8 +38,9 @@ function NavBar() {
       className={navColour ? "sticky" : "navbar"}
     >
       <Container>
-        <Navbar.Brand href="/" className="d-flex">
+        <Navbar.Brand href="/" className="d-flex align-items-center">
           <img src={logo} className="img-fluid logo" alt="brand" />
+          <img src={avatar} className="img-fluid navbar-avatar" alt="avatar" />
         </Navbar.Brand>
 
         <Navbar.Toggle
@@ -53,7 +56,12 @@ function NavBar() {
           <Nav className="ms-auto" defaultActiveKey="#home">
 
             <Nav.Item>
-              <Nav.Link as={Link} to="/" onClick={() => updateExpanded(false)}>
+              <Nav.Link
+                as={Link}
+                to="/"
+                onClick={() => updateExpanded(false)}
+                className={location.pathname === "/" ? "active" : ""}
+              >
                 <AiOutlineHome style={{ marginBottom: "2px" }} /> Home
               </Nav.Link>
             </Nav.Item>
@@ -63,6 +71,7 @@ function NavBar() {
                 as={Link}
                 to="/about"
                 onClick={() => updateExpanded(false)}
+                className={location.pathname === "/about" ? "active" : ""}
               >
                 <AiOutlineUser style={{ marginBottom: "2px" }} /> About
               </Nav.Link>
@@ -73,6 +82,7 @@ function NavBar() {
                 as={Link}
                 to="/project"
                 onClick={() => updateExpanded(false)}
+                className={location.pathname === "/project" ? "active" : ""}
               >
                 <AiOutlineFundProjectionScreen
                   style={{ marginBottom: "2px" }}
@@ -87,20 +97,22 @@ function NavBar() {
                 as={Link}
                 to="/contact"
                 onClick={() => updateExpanded(false)}
+                className={location.pathname === "/contact" ? "active" : ""}
               >
                 <CgFileDocument style={{ marginBottom: "2px" }} /> Contact
               </Nav.Link>
             </Nav.Item>
 
-           <Nav.Item>
-  <Nav.Link
-    as={Link}
-    to="/achievements"
-    onClick={() => updateExpanded(false)}
-  >
-    <ImBlog style={{ marginBottom: "2px" }} /> Achievements
-  </Nav.Link>
-</Nav.Item>
+            <Nav.Item>
+              <Nav.Link
+                as={Link}
+                to="/achievements"
+                onClick={() => updateExpanded(false)}
+                className={location.pathname === "/achievements" ? "active" : ""}
+              >
+                <ImBlog style={{ marginBottom: "2px" }} /> Achievements
+              </Nav.Link>
+            </Nav.Item>
 
 
             <Nav.Item className="fork-btn">

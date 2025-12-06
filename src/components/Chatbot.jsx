@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import chatbotResponses from "./chatbotResponses";
 import "./Chatbot.css";
+import avatar from "../Assets/avatar.png";
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -121,7 +122,8 @@ const Chatbot = () => {
       {/* Floating Chat Icon */}
       {!isOpen && (
         <div className="chatbot-toggle" onClick={() => setIsOpen(true)}>
-          💬
+          <img src={avatar} alt="Chatbot" className="chatbot-avatar" />
+          <span>Chat with me</span>
         </div>
       )}
 
@@ -130,7 +132,9 @@ const Chatbot = () => {
         <div className="chatWindow">
           <div className="chatHeader">
             <div className="chatHeaderTitle">
-              <span className="botAvatar">🤖</span>
+              <span className="botAvatar">
+                <img src={avatar} alt="Bot" className="header-avatar" />
+              </span>
               <div>
                 <strong>Sree's Assistant</strong>
                 <div className="onlineStatus">Online</div>

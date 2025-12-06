@@ -1,0 +1,74 @@
+.spotlight-card {
+    position: relative;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(10, 5, 20, 0.85);
+    /* Much darker background for contrast */
+    overflow: hidden;
+    --spotlight-color: rgba(199, 112, 240, 0.5);
+    /* Stronger default color */
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.1);
+    /* Permanent subtle glow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.spotlight-card:hover {
+    box-shadow: 0 0 30px rgba(190, 80, 244, 0.3), 0 0 10px rgba(190, 80, 244, 0.5);
+    /* Intense glow on hover */
+    border-color: rgba(190, 80, 244, 0.5);
+    transform: translateY(-2px);
+}
+
+.spotlight-overlay {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    /* Removed mix-blend-mode to ensure color pops */
+}
+
+/* Permanent Animated Gradient Border */
+.spotlight-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 2px;
+    /* Thicker border */
+    background: linear-gradient(45deg,
+            rgba(139, 92, 246, 0.3),
+            rgba(236, 72, 153, 0.3),
+            rgba(139, 92, 246, 0.3));
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 1;
+    /* Always visible */
+    pointer-events: none;
+    z-index: 2;
+    animation: borderRotate 4s linear infinite;
+    background-size: 200% 200%;
+}
+
+@keyframes borderRotate {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.spotlight-card>* {
+    position: relative;
+    z-index: 3;
+}
