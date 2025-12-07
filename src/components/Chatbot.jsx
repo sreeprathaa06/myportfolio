@@ -35,6 +35,7 @@ const Chatbot = () => {
 
       recognitionRef.current = recog;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const startVoice = () => {

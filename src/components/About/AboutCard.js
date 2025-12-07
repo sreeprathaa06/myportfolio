@@ -12,7 +12,7 @@ function AboutCard() {
             from <span className="purple">Salem, India</span>.
             <br />
             I’m currently pursuing my bachelor's degree in Computer Science and Engineering at Ksr College of Engineering{" "}
-            <span className="purple">Aspiring Engineer </span> at{" "}
+            <span className="purple">Aspiring Engineer </span> 
             <span className="purple">Who Loves to code and develop </span>.
             <br />
             

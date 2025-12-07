@@ -1,66 +1,90 @@
-import React from "react";
-import { Col, Row } from "react-bootstrap";
-import { SiNextdotjs, SiSolidity } from "react-icons/si";
-import { FaRust } from "react-icons/fa";
-import Go from "../../Assets/TechIcons/go.svg";
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 import C from "../../Assets/TechIcons/C++.svg";
 import Javascript from "../../Assets/TechIcons/Javascript.svg";
 import Node from "../../Assets/TechIcons/Node.svg";
 import ReactIcon from "../../Assets/TechIcons/React.svg";
-import HaskellIcon from "../../Assets/TechIcons/Haskell.svg";
-import Java from "../../Assets/TechIcons/Java.svg";
-import Python from "../../Assets/TechIcons/Python.svg";
-import Typescript from "../../Assets/TechIcons/Typescript.svg";
 import Git from "../../Assets/TechIcons/Git.svg";
-import Firebase from "../../Assets/TechIcons/Firebase.svg";
-import Redis from "../../Assets/TechIcons/Redis.svg";
-import Docker from "../../Assets/TechIcons/Docker.svg";
-import Mongo from "../../Assets/TechIcons/Mongo.svg";
-import SQL from "../../Assets/TechIcons/SQL.svg";
-import Kubernates from "../../Assets/TechIcons/Kubernates.svg";
-import Redux from "../../Assets/TechIcons/Redux.svg";
-import Tailwind from "../../Assets/TechIcons/Tailwind.svg";
-import MUI from "../../Assets/TechIcons/MUI.svg";
-import Postman from "../../Assets/TechIcons/Postman.svg";
-import AWS from "../../Assets/TechIcons/AWS.svg";
-import Kafka from "../../Assets/TechIcons/Kafka.svg";
-
+import Python from "../../Assets/TechIcons/Python.svg";
+import Java from "../../Assets/TechIcons/Java.svg";
 
 function Techstack() {
     const techSkills = [
-        { icon: C, name: "C++" },
-        { icon: Javascript, name: "Javascript" },
-        { icon: Node, name: "Node.Js" },
-        { icon: ReactIcon, name: "React.Js" },
-        { icon: Git, name: "Git" },
-        { icon: Python, name: "Python" },
-        { icon: Java, name: "Java" },
-        // Add more skills here if needed to fill the orbit
+        { id: "cpp", img: C, name: "C++" },
+        { id: "javascript", img: Javascript, name: "JavaScript" },
+        { id: "node", img: Node, name: "Node.js" },
+        { id: "react", img: ReactIcon, name: "React" },
+        { id: "git", img: Git, name: "Git" },
+        { id: "python", img: Python, name: "Python" },
+        { id: "java", img: Java, name: "Java" },
     ];
 
+    const iconsRef = useRef([]);
+
+    useEffect(() => {
+        // Initial entrance animation from bottom
+        gsap.fromTo(
+            iconsRef.current,
+            {
+                y: 100,
+                opacity: 0,
+                scale: 0.5,
+            },
+            {
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                duration: 0.8,
+                ease: "back.out(1.7)",
+                stagger: 0.1,
+            }
+        );
+
+        // Continuous pop animation
+        iconsRef.current.forEach((icon, index) => {
+            gsap.to(icon, {
+                y: -20,
+                duration: 0.6,
+                ease: "power1.inOut",
+                repeat: -1,
+                yoyo: true,
+                delay: index * 0.15,
+            });
+        });
+    }, []);
+
     return (
-        <div className="skill-system">
-            <div className="skill-sun">
-                <span>Skillset</span>
-            </div>
-            <div className="orbit-container">
-                {techSkills.map((skill, index) => (
-                    <div
-                        className="planet-socket"
-                        style={{ '--i': index, '--total': techSkills.length }}
-                        key={index}
-                    >
-                        <div className="planet-counter-rotator">
-                            <div className="planet-card-animator">
-                                <div className="tech-icons">
-                                    <img src={skill.icon} alt={skill.name} />
-                                    <div className="tech-icons-text">{skill.name}</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
+        <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '30px',
+            padding: '40px 20px',
+            flexWrap: 'wrap',
+        }}>
+            {techSkills.map((skill, index) => (
+                <div
+                    key={skill.id}
+                    ref={(el) => (iconsRef.current[index] = el)}
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        cursor: 'pointer',
+                    }}
+                >
+                    <img
+                        src={skill.img}
+                        alt={skill.name}
+                        style={{
+                            width: '80px',
+                            height: '80px',
+                            objectFit: 'contain',
+                            filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2))',
+                        }}
+                    />
+                </div>
+            ))}
         </div>
     );
 }
